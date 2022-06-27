@@ -63,20 +63,22 @@ function init() {
     inquirer
     .prompt(questions)
     .then((response => {
-        console.log(response)
+        let currentEmployee = response
+        finalQuestionAsk(finalQuestion(response.role), currentEmployee)
     }))
+
+
+}
+
+const finalQuestionAsk = (questionObj, currentEmployee ) => {
+    inquirer.prompt(questionObj)
+    .then((response) => {
+        let combined = Object.assign(currentEmployee, response)
+        console.log(combined)
+    })
 }
 
 // Function call to initialize app
 init();
 
 
-
-// let eric = new Employee('eric', '001', 'ericlake@me.com');
-// let danny = new Manager ('Danny', '002', 'teacher.danny.notreal@gmail.com', '101');
-// let marlee = new Engineer('Marlee', '003', 'marleeahudson@gmail.com', 'marcelona')
-// let isaiah = new Intern('Isaiah', '004', 'isaiah.example@gmail.com', 'University of Denver')
-
-// console.log(danny.role)
-// console.log(marlee.github)
-// console.log(isaiah.email)
