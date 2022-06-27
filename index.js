@@ -1,6 +1,9 @@
 const { Employee, Manager, Engineer, Intern } = require('./lib/classes.js');
 const fs = require('fs');
-const inquirer = require('inquirer')
+const inquirer = require('inquirer');
+const { team } = require('./lib/data.js');
+
+let teamList = []
 
 let expander = (employeeType) => {
     switch(employeeType) {
@@ -55,11 +58,11 @@ const questions = [
     lastQuestion]
 
 
-
+let finalQuestion = questions.pop()
 
 
 function init() {
-    let finalQuestion = questions.pop()
+
     inquirer
     .prompt(questions)
     .then((response => {
@@ -75,6 +78,22 @@ const finalQuestionAsk = (questionObj, currentEmployee ) => {
     .then((response) => {
         let combined = Object.assign(currentEmployee, response)
         console.log(combined)
+        teamList.push(combined)
+        addAnother()
+    })
+}
+
+const addAnother = () => {
+    inquirer.prompt({
+        type: 'confirm',
+        name: 'another',
+        message: 'Add another team member',
+        default: 'false'
+        
+    })
+    .then((data) => {
+        console.log(data)
+        return (data.another ? init() : console.log(teamList))
     })
 }
 
