@@ -92,12 +92,15 @@ const addAnother = () => {
         
     })
     .then((data) => {
-        console.log(data)
-        return (data.another ? init() : console.log(teamList))
+        return (data.another ? init() : generateHTML(teamList))
     })
 }
 
 // Function call to initialize app
 init();
 
+
+let generateHTML = (list) => {
+    console.log(list)
+}
 
