@@ -1,17 +1,26 @@
-// const { Employee, Manager, Engineer, Intern } = require('./lib/classes.js');
-// const fs = require('fs');
+const { Employee, Manager, Engineer, Intern } = require('./lib/classes.js');
+const fs = require('fs');
 const inquirer = require('inquirer')
 
 let expander = (employeeType) => {
     switch(employeeType) {
     case 'Manager':
-        return 'Employee office number'
+        return {
+            type: 'input',
+            message: 'Employee office number',
+            name: 'office'}
         break;
     case 'Engineer':
-        return 'GitHub Username'
+        return {
+            type: 'input',
+            message: 'GitHub Username',
+            name: 'github'}
         break;
     case 'Intern':
-        return 'School/University'
+        return {
+            type: 'input',
+            message: 'School/University:',
+            name: 'school'}
         break;
     default:
         return
@@ -21,7 +30,29 @@ let expander = (employeeType) => {
 
 lastQuestion = input => expander(input)
 
-const questions = ['Enter employee name: ', 'Enter employee ID', 'Enter employee email address', 'Select employee role', lastQuestion]
+const questions = [
+    {
+    type: 'input',
+    message: 'Enter employee name:',
+    name: 'name'
+    },
+    {
+    type: 'input',
+    message: 'Enter employee ID',
+    name: 'id'
+    },
+    {
+    type: 'input',
+    message: 'Enter employee email address',
+    name: 'email'
+    },
+    {
+    type: 'list',
+    message: 'Select employee role', 
+    name: 'role',
+    choices: ['Manager', 'Engineer', 'Intern', 'Other']
+    },
+    lastQuestion]
 
 
 
@@ -30,12 +61,10 @@ const questions = ['Enter employee name: ', 'Enter employee ID', 'Enter employee
 function init() {
     let finalQuestion = questions.pop()
     inquirer
-        .prompt(questions)
-        .then((data) => {
-            console.log(data)
-            // writeToFile(`${data.title.toUpperCase()}-README`, generateMarkdown.generateMarkdown(data))
-        })
-        .then(console.log(finalQuestion('Manager')))
+    .prompt(questions)
+    .then((response => {
+        console.log(response)
+    }))
 }
 
 // Function call to initialize app
