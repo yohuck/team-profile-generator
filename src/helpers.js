@@ -13,3 +13,15 @@ console.log(employeeId());
 console.log(employeeId());
 console.log(employeeId())
 
+const createArticle = (dataObject) => {
+    let article = `<article>
+    <h3>${dataObject.name}</h3>
+    <ul>
+        <li>Role: ${dataObject.role}</li>
+        <li>Employee ID: ${dataObject.id}</li>
+        <li><a href="mailto: ${dataObject.email}">${dataObject.email}</a></li>
+        <li>${dataObject.last}</li>
+    </ul>
+</article>`
+return article
+}
