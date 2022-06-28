@@ -188,4 +188,5 @@ let secondHalf = `    </section>
 
     a{
         color: #9673FF
+    }
 </style>`
