@@ -101,10 +101,16 @@ init();
 
 let middle = ''
 let generateHTML = (list) => {
-    console.log(list)
 
     list.forEach(employee => createArticle(employee))
-    console.log(firstHalf + middle + secondHalf)
+    let outputHTML = firstHalf + middle + secondHalf;
+    writeToFile('team-profile', outputHTML)
+}
+
+const writeToFile = (fileName, data) => {
+    fs.appendFile(`${fileName}.html`, `${data}`, (err) => {
+        err? console.error(err) : console.log('Success!')
+    })
 }
 
 const createArticle = (dataObject) => {
@@ -117,7 +123,6 @@ const createArticle = (dataObject) => {
         <li>${dataObject.last}</li>
     </ul>
 </article>`
-console.log(article)
 middle = middle + article
 return article
 }
