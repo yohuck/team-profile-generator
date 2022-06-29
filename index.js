@@ -114,13 +114,15 @@ const writeToFile = (fileName, data) => {
 }
 
 const createArticle = (dataObject) => {
+    let lastQuestion = expander(dataObject.role)
+
     let article = `<article>
     <h3>${dataObject.name}</h3>
     <ul>
         <li>Role: ${dataObject.role}</li>
         <li>Employee ID: ${dataObject.id}</li>
         <li><a href="mailto: ${dataObject.email}">${dataObject.email}</a></li>
-        <li>${dataObject.last}</li>
+        <li>${lastQuestion.name}: ${dataObject[lastQuestion.name]}</li>
     </ul>
 </article>`
 middle = middle + article
@@ -178,7 +180,7 @@ let secondHalf = `    </section>
     article{
         padding: 1rem;
         margin: 1rem;
-        max-width: 200px;
+        max-width: 300px;
         width: 100%;
         border: 1px solid black;
         border: 1px solid;
