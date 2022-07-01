@@ -1,4 +1,6 @@
-const Manager = require('../lib/classes')
+const {Manager} = require('../lib/classes')
+
+
 
 describe('Manager class', () => {
     describe('Initialization', () => {
