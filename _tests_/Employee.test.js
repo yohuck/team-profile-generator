@@ -1,16 +1,16 @@
-const {Manager} = require('../lib/classes')
+const {Employee} = require('../lib/classes')
 
 
 
-describe('Manager class', () => {
+describe('Employee class', () => {
     describe('Initialization', () => {
-        it('should take a name, id, email address, and office number', () => {
-            const manager = new Manager('Eric', 202, 'ericlake@me.com', 202)
-
-            expect(manager.id).toEqual(202)
-            expect(manager.name).toEqual('Eric');
-            expect(manager.email).toEqual('ericlake@me.com')
-            expect(manager.officeNumber).toEqual(202)
+        it('should take a name, id, and email addres', () => {
+            const employee= new Employee('Waylon', 233, 'jenningsfamily@gmail.com')
+            
+            expect(employee.id).toEqual(233)
+            expect(employee.name).toEqual('Waylon');
+            expect(employee.email).toEqual('jenningsfamily@gmail.com');
+            expect(employee.role).toEqual('Employee');
         })
     })
 })
