@@ -1,7 +1,7 @@
 const { Employee, Manager, Engineer, Intern } = require('./lib/classes.js');
 const fs = require('fs');
 const inquirer = require('inquirer');
-const { team } = require('./lib/data.js');
+// const { team } = require('./lib/data.js');
 
 let teamList = []
 
@@ -76,6 +76,7 @@ function init() {
 const finalQuestionAsk = (questionObj, currentEmployee ) => {
     inquirer.prompt(questionObj)
     .then((response) => {
+        Object.keys(response).includes('github') ? response.github = `<a href='http://github.com/${response.github}' target='_blank'>${response.github}<a>` : response.github = response.github
         let combined = Object.assign(currentEmployee, response)
         console.log(combined)
         teamList.push(combined)

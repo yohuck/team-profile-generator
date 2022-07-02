@@ -9,9 +9,6 @@ const employeeId = () => {
 }
 
 
-console.log(employeeId());
-console.log(employeeId());
-console.log(employeeId())
 
 const createArticle = (dataObject) => {
     let article = `<article>
