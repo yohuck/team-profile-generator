@@ -58,7 +58,7 @@ function init() {
 const finalQuestionAsk = (questionObj, currentEmployee ) => {
     inquirer.prompt(questionObj)
     .then((response) => {
-        Object.keys(response).includes('github') ? response.github = `<a href='http://github.com/${response.github}' target='_blank'>${response.github}<a>` : response.github = response.github
+        Object.keys(response).includes('github') ? response.github = `<a href='http://github.com/${response.github}' target='_blank'>${response.github}</a>` : response.github = response.github
         let combined = Object.assign(currentEmployee, response)
         teamList.push(combined)
         addAnother()

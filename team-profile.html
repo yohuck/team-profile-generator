@@ -1,41 +1,4 @@
-const {expander} = require('./expander');
-const fs = require('fs');
-//HTML Generation
-
-
-let middle = ''
-let generateHTML = (list) => {
-
-    list.forEach(employee => createArticle(employee))
-    let outputHTML = firstHalf + middle + secondHalf;
-    writeToFile('team-profile', outputHTML)
-}
-
-const writeToFile = (fileName, data) => {
-    fs.appendFile(`${fileName}.html`, `${data}`, (err) => {
-        err? console.error(err) : console.log('Success!')
-    })
-}
-
-const createArticle = (dataObject) => {
-    let lastQuestion = expander(dataObject.role)
-
-    let article = `<article>
-    <h3>${dataObject.name}</h3>
-    <ul>
-        <li>Role: ${dataObject.role}</li>
-        <li>Employee ID: ${dataObject.id}</li>
-        <li><a href="mailto: ${dataObject.email}">${dataObject.email}</a></li>
-        <li>${lastQuestion.name}: ${dataObject[lastQuestion.name]}</li>
-    </ul>
-</article>`
-middle = middle + article
-return article
-}
-
-
-
-let firstHalf = `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -48,9 +11,31 @@ let firstHalf = `<!DOCTYPE html>
         <h1>Team Profile</h1>
         <p>This team profile was created using Eric Lake's team profile generator for Node.js. Thanks for checking it out!</p>
     </header>
-    <section>`
-
-let secondHalf = `    </section>
+    <section><article>
+    <h3>Waylon</h3>
+    <ul>
+        <li>Role: Manager</li>
+        <li>Employee ID: 001</li>
+        <li><a href="mailto: waylon001@gmail.com">waylon001@gmail.com</a></li>
+        <li>office: 101</li>
+    </ul>
+</article><article>
+    <h3>Willie</h3>
+    <ul>
+        <li>Role: Engineer</li>
+        <li>Employee ID: 002</li>
+        <li><a href="mailto: willie002@gmail.com">willie002@gmail.com</a></li>
+        <li>github: <a href='http://github.com/will002' target='_blank'>will002</a></li>
+    </ul>
+</article><article>
+    <h3>Hank</h3>
+    <ul>
+        <li>Role: Intern</li>
+        <li>Employee ID: 003</li>
+        <li><a href="mailto: hank.003@gmail.com">hank.003@gmail.com</a></li>
+        <li>school: University of Denver</li>
+    </ul>
+</article>    </section>
 </body>
 </html>
 
@@ -104,6 +89,4 @@ let secondHalf = `    </section>
     a{
         color: #9673FF
     }
-</style>`
-
-exports.generateHTML= generateHTML;
+</style>
