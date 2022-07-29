@@ -5,6 +5,7 @@ This project is a node.js application that takes user input about members of a t
 
 ## Example Profile
 View an example profile generated with the application [here.](https://yohuck.github.io/team-profile-generator/team-profile.html)
+![Screennshot](lib/screenshot.png)
 
 ## Walk-Through Video
 Check out the walk-through video [here.](https://drive.google.com/file/d/1ufWhTbz6xQg_zee3r2K0FWrg7t8C1RLO/view?usp=sharing)
